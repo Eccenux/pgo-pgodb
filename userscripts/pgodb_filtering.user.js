@@ -5,6 +5,8 @@
 // @include     http://www.pokemongodb.net/*
 // @version     1.0.1
 // @grant       none
+// @updateURL   https://github.com/Eccenux/pgo-pgodb/raw/master/userscripts/pgodb_filtering.meta.js
+// @downloadURL https://github.com/Eccenux/pgo-pgodb/raw/master/userscripts/pgodb_filtering.user.js
 // ==/UserScript==
 
 /*
