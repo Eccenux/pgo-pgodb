@@ -1,16 +1,16 @@
 // ==UserScript==
-// @name        PokeGO DB
+// @name        PokeGO DB filtering
 // @namespace   enux.pl
-// @description Customization of PokeGO DB site
+// @description Filtering feature for PokeGO DB site. Currently includes Pokedex table filtering. Also makes the title shorter (better for many tabs opened).
 // @include     http://www.pokemongodb.net/*
 // @version     1
 // @grant       none
 // ==/UserScript==
 
 /*
-// testing
+// testing/debugging
 var s = document.createElement('script');
-s.setAttribute('src', 'http://localhost/testy/greasemonkey/pgo.js')
+s.setAttribute('src', 'http://localhost/testy/greasemonkey/pgo-pgodb/userscripts/pgodb_filtering.user.js')
 document.head.appendChild(s)
 */
 
