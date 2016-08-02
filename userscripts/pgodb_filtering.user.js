@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name        PokeGO DB filtering
 // @namespace   enux.pl
-// @description Filtering feature for PokeGO DB site. Currently includes Pokedex table filtering. Also makes the title shorter (better for many tabs opened).
+// @description Filtering feature for long tables on PokeGO DB site. Works best on Pokedex and Overal move rankings. Also makes the title shorter (better for many tabs opened).
 // @include     http://www.pokemongodb.net/*
-// @version     1
+// @version     1.0.1
 // @grant       none
 // ==/UserScript==
 
@@ -19,14 +19,20 @@ document.head.appendChild(s)
 document.title = document.title.replace(/.+?: /, '');
 
 //
-// pokedex filtering
-function isPokedexPage() {
-  return document.title.search(/Pokédex\s*$/) >= 0;
+// filtering
+function isLongTablePage() {
+	if (document.querySelectorAll('.post-body table').length != 1) {
+		return false;
+	}
+	if (document.querySelectorAll('.post-body tr').length < 15) {
+		return false;
+	}
+	return true;
 }
 
-if (isPokedexPage()) {
-  pokedexFilter = new ViewFilter();
-  pokedexFilter.init();
+if (isLongTablePage()) {
+	pokeFilter = new ViewFilter();
+	pokeFilter.init();
 }
 
 /**
@@ -123,11 +129,11 @@ function ViewFilter()
  * @returns {ViewFilter.ReArray}
  */
 function ReArray(strings, regExpFlags) {
-  this._reArray = [];
+	this._reArray = [];
 
-  for (var i=0; i<strings.length; i++) {
-    this._reArray.push(new RegExp(this.escapeStr4RegExp(strings[i]), regExpFlags));
-  }
+	for (var i=0; i<strings.length; i++) {
+		this._reArray.push(new RegExp(this.escapeStr4RegExp(strings[i]), regExpFlags));
+	}
 }
 
 /**
@@ -137,7 +143,7 @@ function ReArray(strings, regExpFlags) {
  * @returns {String}
  */
 ReArray.prototype.escapeStr4RegExp = function(str) {
-  return str.replace(/([\[\]\{\}\|\.\*\?\(\)\$\^\\])/g, '\\$1');
+	return str.replace(/([\[\]\{\}\|\.\*\?\(\)\$\^\\])/g, '\\$1');
 };
 
 /**
@@ -148,16 +154,16 @@ ReArray.prototype.escapeStr4RegExp = function(str) {
  * @returns {Boolean}
  */
 ReArray.prototype.test = function(str, matchAny) {
-  var numMatches = 0;
-  for (var i=0; i<this._reArray.length; i++) {
-    var re = this._reArray[i];
-    if (re.test(str)) {
-      if (matchAny) {
-        return true;
-      } else {
-        numMatches++;
-      }
-    }
-  }
-  return (numMatches == this._reArray.length);
+	var numMatches = 0;
+	for (var i=0; i<this._reArray.length; i++) {
+		var re = this._reArray[i];
+		if (re.test(str)) {
+			if (matchAny) {
+				return true;
+			} else {
+				numMatches++;
+			}
+		}
+	}
+	return (numMatches == this._reArray.length);
 };
