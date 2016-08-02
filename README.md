@@ -6,7 +6,7 @@ This repository contains my customization of [PokeGO DB site](http://www.pokemon
 Contents
 --------
 
-* `userscripts/pgodb_filtering.user.js` -- adds filtering feature for PokeGO DB site.
+* [userscripts/pgodb_filtering.user.js](https://github.com/Eccenux/pgo-pgodb/raw/master/userscripts/pgodb_filtering.user.js) -- adds filtering feature for PokeGO DB site.
 	* Currently enabled for all single-table pages.
 	* Works best on [Pokédex](http://www.pokemongodb.net/2016/05/pokemon-go-pokedex.html) and [Overall Move Rankings (DPS)](http://www.pokemongodb.net/2016/07/overall-move-rankings-dps.html).
 	* Just start typing any part of some pokemon name and you will get a shorter table.
