@@ -3,7 +3,7 @@
 // @namespace   enux.pl
 // @description Makes PokeGO DB a bit of mobile friendly.
 // @include     http://www.pokemongodb.net/*
-// @version     1.0.0
+// @version     1.0.1
 // @grant       none
 // @run-at      document-start
 // @updateURL   https://github.com/Eccenux/pgo-pgodb/raw/master/userscripts/pgodb_mobile.meta.js
@@ -28,3 +28,19 @@ function addViewport() {
 	document.querySelector('head').appendChild(metaTag);
 }
 addViewport();
+
+/**
+	CSS
+*/
+// GM_addStyle('...'); // doesn't work with run-at document-start
+
+function addStyles() {
+	var styleTag = document.createElement('link');
+	styleTag.setAttribute('rel', 'stylesheet');
+	//styleTag.setAttribute('href', 'http://localhost/testy/greasemonkey/pgo-pgodb/userscripts/pgodb_mobile.css');
+	styleTag.setAttribute('href', 'https://github.com/Eccenux/pgo-pgodb/raw/master/userscripts/pgodb_mobile.css');
+	document.querySelector('head').appendChild(styleTag);
+}
+// addStyles(); // doesn't work with run-at document-start either
+// works but with significant delay...
+document.addEventListener("DOMContentLoaded", addStyles, false);
