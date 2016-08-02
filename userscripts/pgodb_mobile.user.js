@@ -3,7 +3,7 @@
 // @namespace   enux.pl
 // @description Makes PokeGO DB a bit of mobile friendly.
 // @include     http://www.pokemongodb.net/*
-// @version     1.0.1
+// @version     1.0.2
 // @grant       none
 // @run-at      document-start
 // @updateURL   https://github.com/Eccenux/pgo-pgodb/raw/master/userscripts/pgodb_mobile.meta.js
