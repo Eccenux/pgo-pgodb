@@ -69,14 +69,14 @@ function ViewFilter()
 	 * Initalize after doc.ready.
 	 */
 	this.init = function () {
-		// parent container for input
-		var container = document.querySelector(".post-header");
-		if (!container) {
+		// main table that is to be filtered
+		var filteredTable = document.querySelector(".post-body table");
+		if (!filteredTable) {
 			return;
 		}
 		
 		// init items
-		items = document.querySelectorAll('.post-body tr');
+		items = filteredTable.querySelectorAll('tr');
 		if (items.length < 2) {
 			return;
 		}
@@ -92,14 +92,15 @@ function ViewFilter()
 			}
 		}
 		
-		// prepare input
+		// prepare input above table
 		var input = document.createElement("input");
+		input.style.cssText = 'font-size: 16px; margin-bottom: .2em';
 		input.setAttribute("type", "text");
 		input.setAttribute("placeholder", "Filter");
 		input.addEventListener('keyup', function() {
 			_self.filter(this.value);
 		});
-		container.appendChild(input);
+		filteredTable.parentNode.insertBefore(input, filteredTable);
 	};
 
 	/**
