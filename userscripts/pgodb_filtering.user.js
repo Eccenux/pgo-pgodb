@@ -3,7 +3,7 @@
 // @namespace   enux.pl
 // @description Filtering feature for long tables on PokeGO DB site. Works best on Pokedex and Overal move rankings (DPS). Also makes the title shorter (better for many tabs opened).
 // @include     http://www.pokemongodb.net/*
-// @version     1.0.2
+// @version     1.0.3
 // @grant       none
 // @updateURL   https://github.com/Eccenux/pgo-pgodb/raw/master/userscripts/pgodb_filtering.meta.js
 // @downloadURL https://github.com/Eccenux/pgo-pgodb/raw/master/userscripts/pgodb_filtering.user.js
@@ -23,10 +23,16 @@ document.title = document.title.replace(/.+?: /, '');
 //
 // filtering
 function isLongTablePage() {
+	// single table
 	if (document.querySelectorAll('.post-body table').length != 1) {
 		return false;
 	}
+	// many rows
 	if (document.querySelectorAll('.post-body tr').length < 15) {
+		return false;
+	}
+	// border (move and pokemon pages doesn't have overall border)
+	if (document.querySelector('.post-body table').style.borderWidth.length === 0) {
 		return false;
 	}
 	return true;
